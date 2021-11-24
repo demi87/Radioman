@@ -92,6 +92,14 @@ class RadioTest {
         assertEquals(expected, actual);
     }
     @Test
+    void sholdCurrentVolumeMin1() {
+        Radio stat = new Radio();
+        stat.setCurrentVolume(-1);
+        int expected = 0;
+        int actual = stat.getCurrentVolume();
+        assertEquals(expected, actual);
+    }
+    @Test
     void shouldCurrentVolume10() {
         Radio stat = new Radio();
         stat.setCurrentVolume(10);
@@ -109,9 +117,54 @@ class RadioTest {
         assertEquals(expected, actual);
     }
     @Test
+    void shouldIncreaseVolume10() {
+        Radio stat = new Radio();
+        stat.setCurrentVolume(10);
+        stat.increaseVolume();
+        int expected = 10;
+        int actual = stat.getCurrentVolume();
+        assertEquals(expected, actual);
+    }
+    @Test
+    void shouldIncreaseVolume9() {
+        Radio stat = new Radio();
+        stat.setCurrentVolume(9);
+        stat.increaseVolume();
+        int expected = 10;
+        int actual = stat.getCurrentVolume();
+        assertEquals(expected, actual);
+    }
+    @Test
+    void shouldIncreaseVolume0() {
+        Radio stat = new Radio();
+        stat.setCurrentVolume(0);
+        stat.increaseVolume();
+        int expected = 1;
+        int actual = stat.getCurrentVolume();
+        assertEquals(expected, actual);
+    }
+    @Test
+    void shouldIncreaseVolumeMin1() {
+        Radio stat = new Radio();
+        stat.setCurrentVolume(-1);
+        stat.increaseVolume();
+        int expected = 1;
+        int actual = stat.getCurrentVolume();
+        assertEquals(expected, actual);
+    }
+    @Test
     void shouldDecreaseVolume0() {
         Radio stat = new Radio();
         stat.setCurrentVolume(0);
+        stat.decreaseVolume();
+        int expected = 0;
+        int actual = stat.getCurrentVolume();
+        assertEquals(expected, actual);
+    }
+    @Test
+    void shouldDecreaseVolume1() {
+        Radio stat = new Radio();
+        stat.setCurrentVolume(1);
         stat.decreaseVolume();
         int expected = 0;
         int actual = stat.getCurrentVolume();

@@ -72,11 +72,31 @@ class RadioTest {
     }
 
     @Test
+    void shouldNextRadioStationin8to9() {
+        Radio stat = new Radio();
+        stat.setCurrentRadioStation(8);
+        stat.nextRadioStation();
+        int expected = 9;
+        int actual = stat.getCurrentRadioStation();
+        assertEquals(expected, actual);
+    }
+
+    @Test
     void shouldPrevRadioStation0() {
         Radio stat = new Radio();
         stat.setCurrentRadioStation(0);
         stat.prevRadioStation();
         int expected = 9;
+        int actual = stat.getCurrentRadioStation();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void shouldPrevRadioStation1() {
+        Radio stat = new Radio();
+        stat.setCurrentRadioStation(1);
+        stat.prevRadioStation();
+        int expected = 0;
         int actual = stat.getCurrentRadioStation();
         assertEquals(expected, actual);
     }
@@ -119,11 +139,10 @@ class RadioTest {
     }
 
     @Test
-    void shouldIncreaseVolume11() {
+    void shouldCurrentVolume11() {
         Radio stat = new Radio();
         stat.setCurrentVolume(11);
-        stat.increaseVolume();
-        int expected = 1;
+        int expected = 0;
         int actual = stat.getCurrentVolume();
         assertEquals(expected, actual);
     }
@@ -133,7 +152,7 @@ class RadioTest {
         Radio stat = new Radio();
         stat.setCurrentVolume(10);
         stat.increaseVolume();
-        int expected = 1;
+        int expected = 10;
         int actual = stat.getCurrentVolume();
         assertEquals(expected, actual);
     }

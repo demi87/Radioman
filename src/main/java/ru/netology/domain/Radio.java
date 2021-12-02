@@ -1,22 +1,38 @@
 package ru.netology.domain;
 
 public class Radio {
+    private int numberRadioStation = 10;
     private int currentRadioStation;
     private int currentVolume;
+    private boolean on;
+
+    public Radio() {
+    }
+
+    public int getNumberRadioStation() {
+        return numberRadioStation;
+    }
+
+    public void setNumberRadioStation(int numberRadioStation) {
+        if (numberRadioStation < 0) {
+            return;
+        }
+        this.numberRadioStation = numberRadioStation;
+    }
 
     public void setCurrentRadioStation(int newCurrentRadioStation) {
         if (newCurrentRadioStation < 0) {
             return;
         }
-        if (newCurrentRadioStation > 9) {
+        if (newCurrentRadioStation > numberRadioStation - 1) {
             return;
         }
         currentRadioStation = newCurrentRadioStation;
     }
 
     public void nextRadioStation() {
-        if (currentRadioStation < 9) {
-            currentRadioStation = currentRadioStation + 1;
+        if (currentRadioStation < numberRadioStation - 1) {
+            currentRadioStation++;
         } else {
             currentRadioStation = 0;
         }
@@ -24,14 +40,14 @@ public class Radio {
 
     public void prevRadioStation() {
         if (currentRadioStation > 0) {
-            currentRadioStation = currentRadioStation - 1;
+            currentRadioStation--;
         } else {
-            currentRadioStation = 9;
+            currentRadioStation = numberRadioStation - 1;
         }
     }
 
     public void setCurrentVolume(int newCurrentVolume) {
-        if (newCurrentVolume > 10) {
+        if (newCurrentVolume > 100) {
             return;
         }
         if (newCurrentVolume < 0) {
@@ -41,14 +57,14 @@ public class Radio {
     }
 
     public void increaseVolume() {
-        if (currentVolume < 10) {
-            currentVolume = currentVolume + 1;
+        if (currentVolume < 100) {
+            currentVolume++;
         }
     }
 
     public void decreaseVolume() {
         if (currentVolume > 0) {
-            currentVolume = currentVolume - 1;
+            currentVolume--;
         }
     }
 

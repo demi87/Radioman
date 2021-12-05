@@ -9,6 +9,10 @@ public class Radio {
     public Radio() {
     }
 
+    public Radio(int numberRadioStation) {
+        this.numberRadioStation = numberRadioStation;
+    }
+
     public int getNumberRadioStation() {
         return numberRadioStation;
     }
